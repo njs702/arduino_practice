@@ -1,10 +1,10 @@
+#include <LiquidCrystal_I2C.h>
+
 //#include <LiquidCrystal_I2C_Hangul.h>
 
 #include <core_build_options.h>
 #include <swRTC.h>
 #include <stdlib.h>
-
-#include <LiquidCrystal_I2C.h>
 
 //#include <core_build_options.h>
 //#include <swRTC.h>
@@ -24,7 +24,6 @@ void setup(){
 void loop(){
     
     int a = 4;
-    
     lcd.setCursor(0,0);
     //itoa(rtc.getYear(),year,5);
     lcd.print(rtc.getYear());
@@ -46,6 +45,15 @@ void loop(){
     }
     
     lcd.setCursor(0,1);
-    lcd.print("hello");
+    lcd.print(rtc.getHours());
+    lcd.setCursor(2,1);
+    lcd.print(':');
+    lcd.setCursor(3,1);
+    lcd.print(rtc.getMinutes(),DEC);
+    lcd.setCursor(5,1);
+    lcd.print(':');
+    lcd.setCursor(6,1);
+    lcd.print(rtc.getSeconds());
+    
     
 }
