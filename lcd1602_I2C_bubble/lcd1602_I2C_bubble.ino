@@ -1,65 +1,56 @@
+#include <stdlib.h>
 #include <LiquidCrystal_I2C.h>
 
-//LiquidCrystal_I2C lcd(0x27,16,2);
+#define MAX 500
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+int data[MAX];
 
-int numbers[800] = {0,};
-int number;
+void tmp(int *A, int *B)
+{
+    int tmp;
+    tmp = *A;
+    *A = *B;
+    *B = tmp;
+}
 
-void bubble_sort(int dataSet[],int dataSize){
-    int temp = 0;
-    for(int i=0;i<dataSize-1;i++){
-        for(int j=0;j<dataSize-(i+1);j++){
-            if(dataSet[j]>dataSet[j+1]){
-                temp = dataSet[j+1];
-                dataSet[j+1] = dataSet[j];
-                dataSet[j] = temp;
+void setup()
+{
+    
+    Serial.begin(9600);
+    
+    for(int i = 0 ; i < MAX ; i++)
+        data[i] = rand();
+    Serial.print("before \n");
+    Serial.println("up");
+    for(int i = 0; i<10 ; i++)Serial.println(data[i]);
+    Serial.println("down");
+    for(int i = 0; i<10 ; i++)Serial.println(data[MAX - 9 + i]);
+    for(int j =0;j<MAX ; j++)
+        for(int i = 0; i < MAX-1 ; i++)
+        {
+            if(data[i]<data[i+1])
+            {
+                tmp(&data[i], &data[i+1]);
             }
         }
-    }
+    Serial.print("after \n");
+    Serial.println("up");
+    for(int i = 0; i<10 ; i++)Serial.println(data[i]);
+    Serial.println("down");
+    for(int i = 0; i<10 ; i++)Serial.println(data[MAX - 9 + i]);
+    lcd.init();  
+    lcd.backlight();
 }
-
-void setup(){
-    Serial.begin(9600);
-    /* Serial.begin(9600);
-    Serial.print(F("정렬 전 데이터 10개"));
-    for(int i=0;i<5;i++){
-        Serial.print(F("hi"));
-    }
-    for(int i=799;i>789;i--){
-        Serial.print(F("hi"));
-    } */
-    //lcd.init();
-    //lcd.backlight();
+void loop()
+{
+    //if(Serial.available())
     
-    randomSeed(analogRead(0));
-    
-}
-
-void loop(){
-    if(Serial.available()){
-        for(int i=0;i<800;i++){
-        numbers[i] = random(1,801);
+        for(int i = 0; i<10 ; i++){
+            lcd.setCursor(0, 0); 
+            lcd.print(data[i]);
+            lcd.setCursor(0, 1); 
+            lcd.print(data[MAX - 9 + i]);
+            delay(1000);
         }
-        Serial.print("before");
-        for(int i=0;i<10;i++){
-            Serial.print(numbers[i]);
-        }
-        bubble_sort(numbers,800);
-        Serial.print("after");
-        for(int i=0;i<10;i++){
-            Serial.print(numbers[i]);
-        }
-    }
-    
-    /* for(int i=0;i<5;i++){
-        lcd.setCursor((i*2),0);
-        lcd.print(numbers[i]);
-    }
-    for(int i=0;i<4;i++){
-        lcd.setCursor(4*i,1);
-        lcd.print(numbers[i+796]);
-    }
-    lcd.setCursor(0,1);
-    lcd.print(numbers[799]); */
     
 }
