@@ -1,3 +1,5 @@
+#include <LiquidCrystal_I2C.h>
+
 int led0_Pin = 0;  // 1번째 LED
 int led1_Pin = 1;  // 2번째 LED
 int led2_Pin = 2;  // 3번째 LED
