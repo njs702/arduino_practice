@@ -1,4 +1,5 @@
 #include <LiquidCrystal_I2C.h>
+#include <string.h>
 
 LiquidCrystal_I2C lcd(0x27,16,2);
 int red = 2;
@@ -17,10 +18,14 @@ void setup(){
 void loop(){
     // A0핀에 아날로그 전압을 디지털 값으로 변환한 후 sensorValue에 저장
     int sensorValue = analogRead(A0);
+    String str = String(sensorValue);
+    
     lcd.setCursor(0,0);
     lcd.print("resistance:");
+    
     lcd.setCursor(11,0);
-    lcd.print(sensorValue);
+    lcd.print(str);
+
     lcd.setCursor(0,1);
     lcd.print("LCD color:");
     
