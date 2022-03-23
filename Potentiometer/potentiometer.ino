@@ -21,8 +21,8 @@ void loop(){
     lcd.print(sensorValue);
     if(sensorValue>1000){
         lcd.setCursor(3,0);
-
+        
     }
-    lcd.clear();
+    
     
 }
