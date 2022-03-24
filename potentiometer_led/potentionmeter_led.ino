@@ -18,13 +18,14 @@ void setup(){
 void loop(){
     // A0핀에 아날로그 전압을 디지털 값으로 변환한 후 sensorValue에 저장
     int sensorValue = analogRead(A0);
-    String str = String(sensorValue);
+    char buff[10];
+    sprintf(buff,"%4d",sensorValue);
     
     lcd.setCursor(0,0);
     lcd.print("resistance:");
     
     lcd.setCursor(11,0);
-    lcd.print(str);
+    lcd.print(buff);
 
     lcd.setCursor(0,1);
     lcd.print("LCD color:");
