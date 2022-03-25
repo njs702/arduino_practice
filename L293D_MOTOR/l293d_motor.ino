@@ -14,7 +14,6 @@ void Motor_ccw() { // 반시계 방향 회전
 void Motor_cw() // 시계 방향 회전
 {
   digitalWrite(DIR1, LOW);       // DIR1 Off
-  Serial.print("hello");
   digitalWrite(DIR2, HIGH);      // DIR2 On
   digitalWrite(EN1, HIGH);       // Motor Enable
 }
