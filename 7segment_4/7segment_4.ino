@@ -60,12 +60,4 @@ void loop() {
         count++;
     }
     show_4_digit(count);
-    /* for(int i=0;i<10;i++){
-        show_digit(2,i);
-        delay(500);
-    } */
-    
-    /* digitalWrite(segment_pin[1],LOW);
-    digitalWrite(segment_pin[2],LOW);
-    digitalWrite(segment_pin[3],LOW); */
 }
