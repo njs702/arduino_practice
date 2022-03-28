@@ -64,22 +64,22 @@ void setup(){
 void school_bell(){
     // 학교종이 땡떙땡
     for(int i=0;i<12;i++){
-            tone(buzzer_pin,melody[cur_num][i],200);
+        tone(buzzer_pin,melody[cur_num][i],200);
+        delay(300);
+        if(i==6){
             delay(300);
-            if(i==6){
-                delay(300);
-            }
         }
-        delay(700);
+    }
+    delay(700);
 
-        for(int i=12;i<sizeof(melody[cur_num])/sizeof(int);i++){
-            tone(buzzer_pin,melody[cur_num][i],200);
+    for(int i=12;i<sizeof(melody[cur_num])/sizeof(int);i++){
+        tone(buzzer_pin,melody[cur_num][i],200);
+        delay(300);
+        if(i==18){
             delay(300);
-            if(i==18){
-                delay(300);
-            }
         }
-        //noTone(buzzer_pin);
+    }
+    //noTone(buzzer_pin);
 }
 
 void mountain_rabbit(){
