@@ -9,13 +9,22 @@
 #define G 494 // 시 
 #define H 523 // 도
 
+#define B5 587 // 5옥타브 레
+#define C5 659 // 5옥타브 미
+#define D5 698 // 5옥타브 파
+#define E5 784 // 5옥타브 솔
+#define F5 880 // 5옥타브 라
+#define G5 988 // 5옥타브 시
+#define H5 1046 // 6옥타브 도
+
+
 LiquidCrystal_I2C lcd(0x27,16,2);
 
 int buzzer_pin = 6;
 int button0_Pin = 8;   // 1번째 스위치
 int button1_Pin = 9;   // 2번째 스위치
 int button2_Pin = 10;  // 3번째 스위치
-int melody[3][70] = {
+int melody[4][70] = {
     {E,E,_F,_F,E,E,C,E,E,C,C,B,E,E,_F,_F,E,E,C,E,C,B,C,A}, // 학교종이 떙떙떙
     {E,C,C,E,C,A,B,C,B,A,C,E,H,E,H,E,H,E,C,E,B,D,C,B,A}, // 산토끼
     {523,523,523,523,523,
@@ -31,7 +40,7 @@ int melody[3][70] = {
     784,784,659,523,
     784,784,784,880,784,
     1047,784,1047,784,
-    659,587,523} // 곰 세마리
+    659,587,523}, // 곰 세마리
 };
 
 // 곰 세마리 박자
