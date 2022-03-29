@@ -60,7 +60,7 @@ int between;
 
 void loop(){
     for(int i=0;i<sizeof(melody)/sizeof(int);i++){
-        int duration = 1000/melody_duration[i];
+        int duration = 1000 / melody_duration[i];
         tone(buzzer_pin,melody[i],duration);
         if(i==64 || i==65 || i==76){
             between = 300 + duration * 1.25;;
