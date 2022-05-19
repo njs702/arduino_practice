@@ -5,6 +5,7 @@ void setup(){
 void loop(){
     for(size_t i=0;i<100;i++){
         Serial.println(i);
+        Serial.write(i);
         delay(500);
     }
     //Serial.print("\n");
